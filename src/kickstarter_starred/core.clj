@@ -66,6 +66,8 @@
 
 (def app (-> #'all-routes wrap-keyword-params wrap-params wrap-stacktrace))
 
-(defn -main [port]
-	(run-server app {:port (Integer. port)})
+(defn -main []
+  (let [port (Integer. (or (System/getenv "PORT") "8080"))]
+	(println port)
+    (run-server app {:port port}))
 )

@@ -12,6 +12,7 @@
 				 [compojure "1.1.6"]]
   :profiles {:uberjar {:aot :all}}
 	:plugins [[lein-ring "0.8.7"]]
-	:ring {:handler kickstarter-starred.core/app :port 8080}
+	:ring {:handler kickstarter_starred.core/app :port 8080}
 	:min-lein-version "2.0.0"
+  :main ^:skip-aot kickstarter-starred.core
 )
