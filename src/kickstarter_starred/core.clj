@@ -33,7 +33,7 @@
 		(map #(select-keys % [:name :deadline :urls]))
 		 (map #(let [when (c/from-long (* 1000 (:deadline %)))]
 					[:vevent
-						[:summary (:name %)]
+						[:summary (str "Kickstarter expiry: " (:name %))]
 						[:dtstart when]
 						[:dtend when]
 						[:description (-> % :urls :web :project)]
@@ -68,6 +68,5 @@
 
 (defn -main []
   (let [port (Integer. (or (System/getenv "PORT") "8080"))]
-	(println port)
     (run-server app {:port port}))
 )
